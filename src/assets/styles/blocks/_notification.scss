@@ -1,0 +1,16 @@
+@use '../utilities' as *;
+
+.notification {
+  font-size: $font-size-small;
+  margin-top: $size-quark;
+  height: $notification-size-height;
+  display: inline-flex;
+  align-items: center;
+
+  &--info {
+    color: $notification-color-info;
+  }
+  &--error {
+    color: $notification-color-danger;
+  }
+}

@@ -1,0 +1,5 @@
+@use '../utilities' as *;
+
+a {
+  @include reset-link;
+}

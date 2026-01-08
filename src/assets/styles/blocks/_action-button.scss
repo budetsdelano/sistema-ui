@@ -1,0 +1,33 @@
+@use '../utilities' as *;
+
+.action-button {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  padding: 0 $button-padding-base;
+  &--base {
+    border-radius: $button-border-radius-base;
+    height: $button-height-base;
+    padding: $button-padding-base;
+    background: $button-background-color-base;
+    color: $button-color-base;
+    font-size: $font-size-base;
+
+    @include hover() {
+      background: $button-background-color-base--hovered;
+      color: $button-color-base--hovered;
+    }
+  }
+  &--minor {
+    border-radius: $button-border-radius-base;
+    height: $button-height-base;
+    padding: $button-padding-base;
+    background: $button-background-color-minor;
+    color: $button-color-minor;
+    font-size: $font-size-base;
+
+    @include hover() {
+      background: $button-background-color-minor--hovered;
+      color: $button-color-minor--hovered;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@use '../utilities' as *;
+
+.form {
+  &-container {
+    background-color: $color-white;
+    padding: $size-big;
+    border-radius: $size-base;
+    box-shadow: $shadow-base;
+    max-width: s(552);
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: $form-gap-row-gap;
+  }
+  &-fields {
+    display: flex;
+    flex-direction: column;
+    row-gap: $form-gap-row-gap;
+  }
+
+  &-label {
+    color: $label-color;
+    font-size: $label-font-size;
+    margin-bottom: $label-margin-bottom;
+    display: inline-block;
+    max-width: max-content;
+
+    & .label-required {
+      color: $label-required-asterisk;
+    }
+  }
+
+  &-required-note {
+    & span {
+      color: $label-required-asterisk;
+    }
+  }
+  &-buttons {
+    display: flex;
+    row-gap: $form-gap-row-gap;
+    column-gap: $form-gap-column-gap;
+  }
+}

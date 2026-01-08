@@ -1,0 +1,14 @@
+@use '../utilities' as *;
+
+.button {
+  @include reset-button;
+
+  &:disabled {
+    opacity: $button-status-disabled;
+  }
+
+  &-icon {
+    background: transparent;
+    padding: 0;
+  }
+}

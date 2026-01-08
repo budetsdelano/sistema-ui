@@ -1,0 +1,119 @@
+@use '../utilities' as *;
+
+.input {
+  &-checkbox {
+    gap: $size-atom;
+    display: flex;
+    position: relative;
+    cursor: pointer;
+
+    & input {
+      display: none;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      width: $input-type-checkbox-widthxheight-base;
+      height: $input-type-checkbox-widthxheight-base;
+      border-radius: $border-radius-small;
+      border: solid $input-border-size-base $input-border-color-base;
+    }
+
+    &--error::before {
+      border-color: $input-border-color-base--error;
+    }
+
+    &--checked::after {
+      content: '';
+      width: $size-micro;
+      height: $size-micro;
+      border-radius: $size-quark;
+      background-color: $input-border-color-base--hover;
+      top: $size-quark;
+      left: $size-quark;
+      position: absolute;
+    }
+    &--checked::before {
+      content: '';
+      border-color: $input-border-color-base--hover;
+    }
+
+    & a {
+      text-decoration: underline;
+      color: $color-blue--deep;
+      @include hover() {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &-text {
+    height: $input-type-text-height-base;
+    border-radius: $input-border-radius-base;
+    background-color: $input-background-color-base;
+    color: $input-color-base;
+    border: $input-border-size-base solid $input-border-color-base;
+    font-size: $font-size-base;
+    padding: 0 $input-padding-base;
+
+    &--error {
+      border-color: $input-border-color-base--error;
+      color: $input-type-text--error;
+    }
+
+    &-wrapper {
+      display: flex;
+      & input {
+        width: 100%;
+
+        &[id='phone'] {
+          max-width: s(180);
+        }
+      }
+    }
+
+    &::placeholder {
+      color: $input-type-text-placeholder;
+    }
+
+    @include hover() {
+      border-color: $input-border-color-base--hover;
+    }
+
+    &:focus,
+    &:focus-visible {
+      border: $input-border-size-base solid $input-border-color-base--hover;
+    }
+  }
+
+  &-file {
+    padding: $size-small $size-micro;
+    border-radius: $input-border-radius-base;
+    border: $input-border-size-base dashed $input-border-color-base;
+    color: $input-type-text-placeholder;
+
+    cursor: pointer;
+
+    input {
+      display: none;
+    }
+
+    &--has-files {
+      border-color: $input-border-color-base--hover;
+      color: $input-type-text;
+    }
+
+    &--error {
+      border-color: $input-border-color-base--error;
+      color: $input-type-text--error;
+    }
+
+    &-item {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@use '../utilities' as *;
+
+.icon {
+  &--big {
+    width: $size-big;
+    height: $size-big;
+  }
+  &-xmark {
+  }
+}

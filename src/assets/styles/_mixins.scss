@@ -1,0 +1,22 @@
+@use 'functions' as *;
+
+@mixin reset-link {
+  color: inherit;
+  user-select: none;
+
+  &,
+  &:hover &:focus {
+    text-decoration: none;
+  }
+}
+
+@mixin reset-button {
+  // padding: 0;
+  // background: transparent;
+  border: none;
+  align-items: center;
+  display: flex;
+  line-height: 1;
+  user-select: none;
+  cursor: pointer;
+}

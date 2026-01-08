@@ -1,0 +1,17 @@
+@use '../utilities' as *;
+
+.alert {
+  &-block {
+    font-size: $font-size-small;
+    border-radius: $alert-border-radius;
+    display: flex;
+    align-items: center;
+    line-height: normal;
+    padding: $alert-padding-x;
+
+    &--success {
+      color: $alert-color-success;
+      background-color: $alert-background-color-success;
+    }
+  }
+}

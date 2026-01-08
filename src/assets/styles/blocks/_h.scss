@@ -1,0 +1,9 @@
+@use '../utilities' as *;
+
+.h {
+  &2 {
+    font-family: $font-family-brand;
+    font-weight: 600;
+    font-size: $font-size-h2;
+  }
+}
