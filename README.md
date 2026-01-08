@@ -117,10 +117,6 @@ email: {
 
 ## 🔗 Полезные ссылки
 
-- [Демо приложение](https://sistemaui.ru/form/) — Рабочая форма
-- [Дизайн в Figma](https://sistemaui.ru/demo/) — Макет проекта
 - [Документация Vue 3](https://vuejs.org/guide/introduction.html)
 - [Документация Vite](https://vitejs.dev/guide/)
 - [Sass/SCSS документация](https://sass-lang.com/documentation)
-
----
