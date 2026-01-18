@@ -1,93 +1,101 @@
 <template>
-  <div class="form">
-    <div class="form-container">
-      <div class="form-title h2">{{ formConfig.form.title }}</div>
+  <div class="container">
+    <div class="form">
+      <div class="form-container">
+        <div class="form-title h2">{{ formConfig.form.title }}</div>
 
-      <AlertBlock
-        v-if="showSuccessAlert"
-        type="success"
-        :title="formConfig.alerts.success.title"
-        :message="formConfig.alerts.success.message"
-        :closable="formConfig.alerts.success.closable"
-        :auto-close="formConfig.alerts.success.autoClose"
-        :duration="formConfig.alerts.success.duration"
-        @close="showSuccessAlert = false"
-      />
+        <AlertBlock
+          v-if="showSuccessAlert"
+          type="success"
+          :title="formConfig.alerts.success.title"
+          :message="formConfig.alerts.success.message"
+          :closable="formConfig.alerts.success.closable"
+          :auto-close="formConfig.alerts.success.autoClose"
+          :duration="formConfig.alerts.success.duration"
+          @close="showSuccessAlert = false"
+        />
 
-      <form :id="formConfig.form.id" @submit.prevent="handleSubmit" class="form-fields">
-        <div v-for="(fieldConfig, fieldId) in formConfig.fields" :key="fieldId" class="form-group">
-          <FormLabel
-            v-if="fieldConfig.component !== 'InputCheckbox'"
-            :label="fieldConfig.label"
-            :for="fieldConfig.id"
-            :required="fieldConfig.required"
-          />
-
-          <InputText
-            v-if="fieldConfig.component === 'InputText'"
-            :id="fieldConfig.id"
-            v-model="formData[fieldId]"
-            :type="fieldConfig.type"
-            :placeholder="fieldConfig.placeholder"
-            :mask="fieldConfig.mask"
-            :disabled="isSubmitting"
-            :error="!!errors[fieldId]"
-            @blur="validateField(fieldId, formData[fieldId])"
-          />
-
-          <InputFile
-            v-else-if="fieldConfig.component === 'InputFile'"
-            ref="fileInputRef"
-            v-model="formData[fieldId]"
-            :placeholder="fieldConfig.placeholder"
-            :hint="fieldConfig.hint"
-            :multiple="fieldConfig.multiple"
-            :disabled="isSubmitting"
-            :error="!!errors[fieldId]"
-            @change="validateFileField(fieldId, formData[fieldId])"
-          />
-
-          <InputCheckbox
-            v-else-if="fieldConfig.component === 'InputCheckbox'"
-            v-model="formData[fieldId]"
-            :disabled="isSubmitting"
-            :error="!!errors[fieldId]"
-            @change="validateField(fieldId, formData[fieldId])"
+        <form :id="formConfig.form.id" @submit.prevent="handleSubmit" class="form-fields">
+          <div
+            v-for="(fieldConfig, fieldId) in formConfig.fields"
+            :key="fieldId"
+            class="form-group"
           >
-            <span v-html="fieldConfig.label"></span>
-          </InputCheckbox>
+            <FormLabel
+              v-if="fieldConfig.component !== 'InputCheckbox'"
+              :label="fieldConfig.label"
+              :for="fieldConfig.id"
+              :required="fieldConfig.required"
+            />
 
-          <Notification
-            v-if="errors[fieldId]"
-            type="error"
-            :message="errors[fieldId]"
-            :closable="false"
-            :auto-close="false"
-          />
-        </div>
+            <InputText
+              v-if="fieldConfig.component === 'InputText'"
+              :id="fieldConfig.id"
+              v-model="formData[fieldId]"
+              :type="fieldConfig.type"
+              :placeholder="fieldConfig.placeholder"
+              :mask="fieldConfig.mask"
+              :disabled="isSubmitting"
+              :error="!!errors[fieldId]"
+              @blur="validateField(fieldId, formData[fieldId])"
+            />
 
-        <div
-          class="notification form-required-note notification--info"
-          v-html="formConfig.form.requiredNote"
-        ></div>
+            <InputFile
+              v-else-if="fieldConfig.component === 'InputFile'"
+              ref="fileInputRef"
+              v-model="formData[fieldId]"
+              :placeholder="fieldConfig.placeholder"
+              :hint="fieldConfig.hint"
+              :multiple="fieldConfig.multiple"
+              :disabled="isSubmitting"
+              :error="!!errors[fieldId]"
+              @change="validateFileField(fieldId, formData[fieldId])"
+            />
 
-        <div class="form-buttons">
-          <ActionButton
-            type="submit"
-            :label="isSubmitting ? formConfig.messages.submitting : formConfig.buttons.submit.label"
-            :variant="formConfig.buttons.submit.variant"
-            :disabled="isSubmitting || hasErrors"
-          />
+            <InputCheckbox
+              v-else-if="fieldConfig.component === 'InputCheckbox'"
+              v-model="formData[fieldId]"
+              :disabled="isSubmitting"
+              :error="!!errors[fieldId]"
+              @change="validateField(fieldId, formData[fieldId])"
+            >
+              <span v-html="fieldConfig.label"></span>
+            </InputCheckbox>
 
-          <ActionButton
-            type="button"
-            :label="formConfig.buttons.cancel.label"
-            :variant="formConfig.buttons.cancel.variant"
-            :disabled="isSubmitting"
-            @click="resetForm"
-          />
-        </div>
-      </form>
+            <Notification
+              v-if="errors[fieldId]"
+              type="error"
+              :message="errors[fieldId]"
+              :closable="false"
+              :auto-close="false"
+            />
+          </div>
+
+          <div
+            class="notification form-required-note notification--info"
+            v-html="formConfig.form.requiredNote"
+          ></div>
+
+          <div class="form-buttons">
+            <ActionButton
+              type="submit"
+              :label="
+                isSubmitting ? formConfig.messages.submitting : formConfig.buttons.submit.label
+              "
+              :variant="formConfig.buttons.submit.variant"
+              :disabled="isSubmitting || hasErrors"
+            />
+
+            <ActionButton
+              type="button"
+              :label="formConfig.buttons.cancel.label"
+              :variant="formConfig.buttons.cancel.variant"
+              :disabled="isSubmitting"
+              @click="resetForm"
+            />
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </template>
